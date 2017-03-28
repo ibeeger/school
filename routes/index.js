@@ -3,12 +3,12 @@ var router = express.Router();
 
 //获取验证码
 router.post("/fetchCode",function(req,res,next){
-
+	
 });
 
 //注册
 router.post("/register",function(req,res,next){
-	
+	res.json({})
 });
 
 

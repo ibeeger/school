@@ -1,18 +1,61 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+   <section id="app">
+    <div class="page-cell">
+      
+        <a class="mint-cell"><!----> <div class="mint-cell-left"></div> <div class="mint-cell-wrapper"><div class="mint-cell-title"><!----> <span class="mint-cell-text">标题文字</span> <!----></div> <div class="mint-cell-value"><span></span></div></div> <div class="mint-cell-right"></div> <!----></a>
 
-    <script>
-    	
-      var ws = new WebSocket("ws:127.0.0.1:3000/websocket");
-      console.log(ws)
+    </div>
+    
+      <dl>
+        <dt>姓名：</dt>
+        <dd><input type="text"></dd>
+      </dl>
 
-    </script>
+      <dl>
+        <dt>学校：</dt>
+        <dd>
+             <select name="school" id="school ">
+              <option value="">选择学校</option>
+             </select>
+        </dd>
+      </dl>
+
+      <dl>
+        <dt>入学年份：</dt>
+        <dd>
+          <select name="enterYear" id="enterYear">
+            <option value="">2017</option>
+          </select>
+        </dd>
+      </dl>
+
+    <p><a href="javascript:;">下一步</a></p>   
+
+   </section>
+
+    <section>
+      
+      <dl>
+        <dt>手机号：</dt>
+        <dd><input type="phone"></dd>
+      </dl>
+
+      <dl>
+        <dt>验证码：</dt>
+        <dd><input type="text"> <a href="javascript:;">获取验证码</a></dd>
+      </dl>
+
+
+    </section>
+
+
+  
   </body>
 </html>

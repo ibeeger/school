@@ -4,8 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var login = require('./routes/login');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var status = require('./routes/status');
 var group = require('./routes/groups');
 var school = require('./routes/school');
 
@@ -30,7 +32,8 @@ app.use(function(req,res,next){
   next()
 })
 
-app.use('/', routes);
+app.use('/', login);
+app.use('/tools', status);
 app.use('/users', users);
 app.use('/group', users);
 app.use('/school', users);

@@ -11,13 +11,13 @@ router.post('/fetch', function(req, res, next) {
 });
 
 //修改个人信息
-router.post("/save",function(res,res,next){
+router.post("/save",function(req,res,next){
 
 });
 
 
 //上传
-router.post("/upload",function(res,res,next){
+router.post("/upload",function(req,res,next){
 
 });
 
@@ -28,7 +28,7 @@ router.post("/states",function(req,res,next){
 });
 
 //上传头像
-router.post("/uploadhead",function(res,res,next){
+router.post("/uploadhead",function(req,res,next){
 
 });
 
