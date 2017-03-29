@@ -3,7 +3,7 @@ import express from "express"
 const router = express.Router();
 const fetch = require("./tools/fetch.js")
 
-import * as Item
+import * as Item from "./resjson/res.js"
 
 router.post("/", (req, res, next) => {
 	fetch.findOne("users", req.body).then((json) => {
