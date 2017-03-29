@@ -32,11 +32,11 @@ app.use(function(req,res,next){
   next()
 })
 
-app.use('/', login);
-app.use('/tools', status);
-app.use('/users', users);
-app.use('/group', users);
-app.use('/school', users);
+app.use('/api/login', login);
+app.use('/api/tools', status);
+app.use('/api/users', users);
+app.use('/api/group', users);
+app.use('/api/school', users);
 
 
 // catch 404 and forward to error handler
