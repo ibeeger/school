@@ -16,7 +16,7 @@ router.get('/local', function(req, res, next) {
 	})
 });
 
-//获取城市景点
+//获取城市
 router.get("/jingdian",function(req,res,next){
 	client.setMethod("GET");
 	client.post("http://api.map.baidu.com/geocoder/v2/?location=39.983424,116.322987&output=json&pois=1&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(json){
@@ -33,7 +33,25 @@ router.get("/jingdian",function(req,res,next){
 			}
 		})
 	})
-	
+})
+
+//周边美食
+router.get("/meishi",function(req,res,next){
+	client.setMethod("GET");
+	client.post("http://api.map.baidu.com/geocoder/v2/?location=39.983424,116.322987&output=json&pois=1&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(json){
+		let item = {city:"北京"}
+		if (typeof json=='object') {
+			 item["city"] = json["result"]["addressComponent"]["city"];
+			 item["citycode"] = json["result"]["cityCode"];
+		}
+		client.post("http://api.map.baidu.com/place/v2/search?query=美食&region="+item['city']+"&page_size=20&page_num=0&scope=1&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
+			if (typeof data =='object') {
+				res.json(data)
+			}else{
+				res.end(data+"!")
+			}
+		})
+	})
 })
 
 module.exports = router;
