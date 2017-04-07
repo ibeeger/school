@@ -25,13 +25,13 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //验证
 app.use(function(req,res,next){
   //md5 (uid + ua) = token;
   next()
 })
 
+app.use("/api/fetch",routes);
 app.use('/api/login', login);
 app.use('/api/tools', status);
 app.use('/api/users', users);

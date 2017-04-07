@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-const fetch = require("./tools/fetch.js");
+const fetch ={};
+// const fetch = require("./tools/fetch.js");
 
 //获取个人信息
 router.post('/fetch', function(req, res, next) {

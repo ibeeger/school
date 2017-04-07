@@ -5,7 +5,6 @@ var client = require("./tools/client.js");
 
 //获取周边学校
 router.get('/local', function(req, res, next) {
-
 	client.setMethod("GET");
 	client.post("http://api.map.baidu.com/place/v2/search?query=大学&page_size=20&page_num=0&scope=1&location=39.915,116.404&radius=3000&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
 		if (typeof data =='object') {
@@ -25,7 +24,7 @@ router.get("/jingdian",function(req,res,next){
 			 item["city"] = json["result"]["addressComponent"]["city"];
 			 item["citycode"] = json["result"]["cityCode"];
 		}
-		client.post("http://api.map.baidu.com/place/v2/search?query=景点&region="+item['city']+"&page_size=20&page_num=0&scope=1&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
+		client.post("http://api.map.baidu.com/place/v2/search?query=景点&region="+item['city']+"&page_size=20&page_num=0&scope=2&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
 			if (typeof data =='object') {
 				res.json(data)
 			}else{
@@ -53,5 +52,9 @@ router.get("/meishi",function(req,res,next){
 		})
 	})
 })
+
+
+
+
 
 module.exports = router;

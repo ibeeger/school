@@ -2,14 +2,14 @@
  * @Author: willclass
  * @Date:   2016-08-04 20:36:26
  * @Last Modified by:   ibeeger
- * @Last Modified time: 2017-03-29 19:37:13
+ * @Last Modified time: 2017-03-30 15:22:52
  */
 
 'use strict';
 var MongoClient = require('mongodb').MongoClient,
 	assert = require('assert');
 
-var db = require("../config/dbconfig.js");
+var db = require("../dbconf/dbconfig.js");
 var host = process.env.NODE_ENV == "online" ? "localhost" : "localhost";
 
 console.log(process.env.NODE_ENV);
