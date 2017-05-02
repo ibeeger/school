@@ -14,7 +14,8 @@ var host = process.env.NODE_ENV == "online" ? "localhost" : "localhost";
 
 console.log(process.env.NODE_ENV);
 
-MongoClient.connect("mongodb://" + db.user + ":" + db.pwd + "@" + host + ":" + db.port + "/" + db.db, function(err, db) {
+// MongoClient.connect("mongodb://" + db.user + ":" + db.pwd + "@" + host + ":" + db.port + "/" + db.db, function(err, db) {
+MongoClient.connect("mongodb://" + host + ":" + db.port + "/" + db.db, function(err, db) {
 	assert.equal(null, err);
 	process.dbc = db;
 });

@@ -13,10 +13,13 @@ router.get("/fetchCode",function(req,res,next){
 
 //获取验证码
 router.get("/fetchMsgCode",function(req,res,next){
-	let phone = req.query.phone;
-	Msg.sendRegCode(phone,1122).then(function(){
-		console.log(arguments);
+
+	var phone = req.query.phone;
+	var code = new Date().getTime().toString().slice(8,12);
+	Msg.sendRegCode(phone,code).then(function(){
 		res.end("ok");
+	}).catch(function(e){
+		res.json(e);
 	});
 
 });

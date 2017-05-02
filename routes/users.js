@@ -32,7 +32,7 @@ router.post("/upload", function(req, res, next) {
 
 //获取个人动态信息
 router.post("/states", function(req, res, next) {
-	let page = req.body.page || 1;
+	var page = req.body.page || 1;
 	fetch.findLimit("users_status",{},page).then(()=>{
 
 	})
