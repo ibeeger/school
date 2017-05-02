@@ -9,7 +9,8 @@
 'use strict';
 var express = require('express');
 const router = express.Router();
-const fetch = require("./tools/fetch.js")
+// const fetch = require("./tools/fetch.js")
+const fetch = {};
 
 // import * as Item from "./resjson/res.js"
 
