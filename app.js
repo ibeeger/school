@@ -31,6 +31,7 @@ app.use(function(req,res,next){
   next()
 })
 
+
 app.use("/api/fetch",routes);
 app.use('/api/login', login);
 app.use('/api/tools', status);
@@ -38,7 +39,9 @@ app.use('/api/users', users);
 app.use('/api/group', users);
 app.use('/api/school', users);
 
-
+app.use("*",function(req,res){
+  res.json(req.path)
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
