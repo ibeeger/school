@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var ccap = require("ccap")();
+// var ccap = require("ccap")();
 var Msg = require("./message/index");
 //获取验证码
 router.get("/fetchCode",function(req,res,next){
-	var ary = ccap.get();
-	var txt = ary[0];
-	var buf = ary[1];
-	console.log(txt);
+	// var ary = ccap.get();
+	// var txt = ary[0];
+	// var buf = ary[1];
+	// console.log(txt);
+	const buf = "1";
 	res.end(buf);
 });
 
