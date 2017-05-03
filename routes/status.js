@@ -5,8 +5,9 @@ var client = require("./tools/client.js");
 
 //获取周边学校
 router.get('/local', function(req, res, next) {
+	console.log(req.body);
 	client.setMethod("GET");
-	client.post("http://api.map.baidu.com/place/v2/search?query=大学&page_size=20&page_num=0&scope=1&location=39.915,116.404&radius=3000&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
+	client.post("http://api.map.baidu.com/place/v2/search?query=大学&page_size=20&page_num=0&scope=1&location="+req.body["latitude"]+","+req.body["longitude"]+"&radius=3000&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
 		if (typeof data =='object') {
 			res.json(data)
 		}else{
@@ -17,10 +18,10 @@ router.get('/local', function(req, res, next) {
 
 //获取城市
 router.get("/jingdian",function(req,res,next){
+
 	client.setMethod("GET");
 	client.post("http://api.map.baidu.com/geocoder/v2/?location=39.983424,116.322987&output=json&pois=1&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(json){
 		var item = {city:"北京"}
-		console.log(json);
 		if (typeof json=='object' && json.status==0) {
 
 			 item["city"] = json["result"]["addressComponent"]["city"];
