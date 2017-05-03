@@ -5,7 +5,8 @@
 TopClient = require('./topClient').TopClient;
 
 var client = new TopClient({
-  
+  'appkey': '23670898',
+  'appsecret': '7d8f51cfaa0c5ba3a529ee1caa85a437',
   // 'REST_URL': 'http://gw.api.tbsandbox.com/router/rest'
   'REST_URL': 'http://gw.api.taobao.com/router/rest'
 });
