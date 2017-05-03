@@ -39,8 +39,8 @@ app.use('/api/users', users);
 app.use('/api/group', users);
 app.use('/api/school', users);
 
-app.use("*",function(req,res){
-  res.json(req.path)
+app.use("/",function(req,res){
+   res.render("home",{});
 })
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
