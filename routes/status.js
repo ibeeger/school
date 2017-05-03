@@ -4,7 +4,7 @@ var router = express.Router();
 var client = require("./tools/client.js");
 
 //获取周边学校
-router.get('/local', function(req, res, next) {
+router.post('/local', function(req, res, next) {
 	console.log(req.body);
 	client.setMethod("GET");
 	client.post("http://api.map.baidu.com/place/v2/search?query=大学&page_size=20&page_num=0&scope=1&location="+req.body["latitude"]+","+req.body["longitude"]+"&radius=3000&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
@@ -15,6 +15,7 @@ router.get('/local', function(req, res, next) {
 		}
 	})
 });
+
 
 //获取城市
 router.get("/jingdian",function(req,res,next){
