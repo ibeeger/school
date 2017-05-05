@@ -5,6 +5,7 @@
   "scripts": {
     "es6": "./node_modules/babel-cli/bin/babel-node.js ./bin/www",
     "start": "node ./bin/www",
+    "online":"NODE_ENV=online forever start -a -l -e  ./logs/rest.log ./bin/www",
     "dev": "supervisor ./bin/www"
   },
   "dependencies": {
