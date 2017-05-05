@@ -2,7 +2,7 @@
  * @Author: willclass
  * @Date:   2016-08-04 20:36:26
  * @Last Modified by:   ibeeger
- * @Last Modified time: 2017-03-30 15:22:52
+ * @Last Modified time: 2017-05-05 13:38:25
  */
 
 'use strict';
@@ -10,7 +10,7 @@ var MongoClient = require('mongodb').MongoClient,
 	assert = require('assert');
 
 var db = require("../dbconf/dbconfig.js");
-var host = process.env.NODE_ENV == "online" ? "localhost" : "localhost";
+var host = process.env.NODE_ENV == "online" ? db.ip : db.ip;
 
 console.log(process.env.NODE_ENV);
 
