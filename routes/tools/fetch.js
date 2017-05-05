@@ -10,7 +10,7 @@ var MongoClient = require('mongodb').MongoClient,
 	assert = require('assert');
 
 var db = require("../dbconf/dbconfig.js");
-var host = process.env.NODE_ENV == "online" ? db.ip : db.ip;
+var host = process.env.NODE_ENV == "online" ? "localhost" : db.ip;
 
 console.log(process.env.NODE_ENV);
 
