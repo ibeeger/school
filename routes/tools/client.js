@@ -47,10 +47,18 @@ var client = {
 			}
 		};
 
+		if (Url.parse(url).protocol=="https:") {
+			console.log(Url.parse(url))
+			_options ={
+				  hostname: host,
+				  port: Url.parse(url).port,
+				  path: Url.parse(url).path,
+				  method: 'GET'
+			}
+		}
 
 
 		var _req = CLIENT[Url.parse(url).protocol].request(_options, function(res) {
-			console.log(res)
 			var str = "";
 			if (res.statusCode != 200) {
 				console.log(res.statusCode + ":" + url + ":" + (new Date().getTime() - time.getTime()) + "s|" + time.getFullYear() + "-" + parseInt(time.getMonth() + 1) + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
