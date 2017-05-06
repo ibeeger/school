@@ -27,6 +27,7 @@ router.post("/save", function(req, res, next) {
 	client.setMethod("GET");
 	client.post("https://api.weixin.qq.com/sns/jscode2session?appid="+wxconfig.appid+"&secret="+wxconfig.secret+"&js_code="+req.body.code+"&grant_type=authorization_code",{},
 		function(data){
+			console.log(data);
 			res.json(data);
 		}
 	)
