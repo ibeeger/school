@@ -32,6 +32,7 @@ router.post("/save", function(req, res, next) {
 			const pc = new WXBizDataCrypt(wxconfig.appid, data.session_key);
 			const rst = pc.decryptData(req.body.encryptedData , req.body.iv);
 			fetch.findOne("users",{"openId":rst.openId},{openId:0}).then(function(fjson){
+				console.log(fjson);
 				console.log("找到了"+rst.openId);
 				res.json(Object.assign(success,{data:fjson[0]["_id"]}));
 			},function(err){
