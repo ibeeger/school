@@ -12,10 +12,10 @@ var MongoClient = require('mongodb').MongoClient,
 var db = require("../dbconf/dbconfig.js");
 var host = process.env.NODE_ENV == "online" ? "localhost" : db.ip;
 
-console.log(process.env.NODE_ENV);
+console.log(host);
 
-// MongoClient.connect("mongodb://" + db.user + ":" + db.pwd + "@" + host + ":" + db.port + "/" + db.db, function(err, db) {
-MongoClient.connect("mongodb://" + host + ":" + db.port + "/" + db.db, function(err, db) {
+MongoClient.connect("mongodb://" + db.user + ":" + db.pwd + "@" + host + ":" + db.port + "/" + db.db, function(err, db) {
+// MongoClient.connect("mongodb://" + host + ":" + db.port + "/" + db.db, function(err, db) {
 	assert.equal(null, err);
 	process.dbc = db;
 });
@@ -26,7 +26,8 @@ function findOne(col, query, opts) {
 	let P = new Promise(function(resolve, reject) {
 		let cols = process.dbc.collection(col);
 		cols.findOne(query, _opts, function(err, rst) {
-			if (err) {
+			if (err || rst ==null) {
+				console.log("错误了")
 				reject(err);
 			} else {
 				resolve(rst);

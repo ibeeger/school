@@ -48,7 +48,6 @@ var client = {
 		};
 
 		if (Url.parse(url).protocol=="https:") {
-			console.log(Url.parse(url))
 			_options ={
 				  hostname: host,
 				  port: Url.parse(url).port,
@@ -56,7 +55,6 @@ var client = {
 				  method: 'GET'
 			}
 		}
-
 
 		var _req = CLIENT[Url.parse(url).protocol].request(_options, function(res) {
 			var str = "";
