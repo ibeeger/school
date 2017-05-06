@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const WXBizDataCrypt = require('./WXBizDataCrypt')
+const WXBizDataCrypt = require('./wx/WXBizDataCrypt')
 
 // const fetch ={};
 const fetch = require("./tools/fetch.js");
