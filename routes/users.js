@@ -23,7 +23,7 @@ router.post('/fetch', function(req, res, next) {
 
 //修改个人信息
 router.post("/save", function(req, res, next) {
-
+	console.log(req.body);
 	client.setMethod("GET");
 	client.post("https://api.weixin.qq.com/sns/jscode2session?appid="+wxconfig.appid+"&secret="+wxconfig.secret+"&js_code="+req.body.code+"&grant_type=authorization_code",{},
 		function(data){

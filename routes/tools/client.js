@@ -10,42 +10,47 @@
 
 var host;
 var Url = require("url");
+var https = require("https");
 var http = require("http"),
 	cookie = "",
 	type = 'application/json',
 	method = 'POST',
 	port = 80;
 var env = process.env.NODE_ENV;
+const CLIENT = {
+	"http:":http,
+	"https:":https
+}
 var client = {
 	post: function(url, data, callback) {
 		let time = new Date();
-		if (url.indexOf("http://") > -1) {
-			host = Url.parse(url).host;
-			url = Url.parse(url).path;
-			port = 80;
-		} else {
-			host = config.host.url;
-			port = config.host.port;
-		};
+		let	host = Url.parse(url).host;
+		let	_url = Url.parse(url).path;
+		
+		 
 		// console.log("请求开始:", host, port, url);
 		var _data = JSON.stringify(data),
 			_datalth = Buffer.byteLength(_data, 'utf8');
 
 		var _options = {
-			protocol: url.indexOf("https") > -1 ? "https:" : "http",
+			protocol: Url.parse(url).protocol,
 			hostname: host,
 			port: port,
-			path: url,
+			path: _url,
 			method: method,
 			headers: {
 				// 'X-HT-SSO-HOST':config.sso,
-				// 'User-Agent': this.headers["user-agent"],
+				// 'User-Agent': "xym.ibeeger.com",
 				// 'Content-Type': type,
 				// 'Content-Length': _datalth,
 				// 'Cookie': this.headers.cookie || ""
 			}
 		};
-		var _req = http.request(_options, function(res) {
+
+
+
+		var _req = CLIENT[Url.parse(url).protocol].request(_options, function(res) {
+			console.log(res)
 			var str = "";
 			if (res.statusCode != 200) {
 				console.log(res.statusCode + ":" + url + ":" + (new Date().getTime() - time.getTime()) + "s|" + time.getFullYear() + "-" + parseInt(time.getMonth() + 1) + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
