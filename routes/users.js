@@ -34,7 +34,7 @@ router.post("/save", function(req, res, next) {
 			fetch.findOne("users",{"openId":rst.openId},{openId:0}).then(function(fjson){
 				console.log(fjson);
 				console.log("找到了"+rst.openId);
-				res.json(Object.assign(success,{data:fjson[0]["_id"]}));
+				res.json(Object.assign(success,{data:fjson["_id"]}));
 			},function(err){
 				console.log("未找到"+rst.openId);
 				fetch.inserObj("users",rst).then(function(ijson){
