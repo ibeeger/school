@@ -32,7 +32,7 @@ var client = {
 			_datalth = Buffer.byteLength(_data, 'utf8');
 
 		var _options = {
-			protocol: "http:",
+			protocol: url.indexOf("https") > -1 ? "https:" : "http",
 			hostname: host,
 			port: port,
 			path: url,

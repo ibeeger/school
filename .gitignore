@@ -27,4 +27,5 @@ build/Release
 node_modules
 
 # Debug log from npm
+dbconf
 npm-debug.log

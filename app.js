@@ -36,8 +36,8 @@ app.use("/api/fetch",routes);
 app.use('/api/login', login);
 app.use('/api/tools', status);
 app.use('/api/users', users);
-app.use('/api/group', users);
-app.use('/api/school', users);
+// app.use('/api/group', users);
+// app.use('/api/school', users);
 
 app.use("/",function(req,res){
    res.render("home",{});
