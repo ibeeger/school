@@ -2,7 +2,7 @@
  * @Author: willclass
  * @Date:   2016-08-04 20:36:26
  * @Last Modified by:   ibeeger
- * @Last Modified time: 2017-05-05 13:38:25
+ * @Last Modified time: 2017-05-16 14:13:12
  */
 
 'use strict';
@@ -147,6 +147,22 @@ function updateObj(col, query, sets) {
 	return P;
 };
 
+
+
+function updatePush(col,query,item){
+	let P = new Promise(function(resolve,reject){
+		let cols = process.dbc.collection(col);
+		cols.update(query,{$push:item},function(err,rst){
+			if (err) {
+				reject(err);
+			} else {
+				resolve(rst);
+			}
+		})
+	});
+	return P;
+}
+
 //删除
 function deleteObj(col, query) {
 	let P = new Promise(function(resolve, reject) {
@@ -167,6 +183,7 @@ function deleteObj(col, query) {
 module.exports = {
 	findOne: findOne,
 	findAny:findAny,
+	updatePush:updatePush,
 	findLimit: findLimit,
 	updateNum: updateNum,
 	inserObj: inserObj,
