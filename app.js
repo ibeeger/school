@@ -6,10 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var login = require('./routes/login');
 var routes = require('./routes/index');
-var users = require('./routes/users');
+// var users = require('./routes/users');
 var status = require('./routes/status');
 var group = require('./routes/groups');
 var school = require('./routes/school');
+var votes = require('./routes/forms/router.js');
 
 var app = express();
 // view engine setup
@@ -35,9 +36,10 @@ app.use(function(req,res,next){
 app.use("/api/fetch",routes);
 app.use('/api/login', login);
 app.use('/api/tools', status);
-app.use('/api/users', users);
+// app.use('/api/users', users);
 // app.use('/api/group', users);
 // app.use('/api/school', users);
+app.use('/vote', votes);
 
 app.use("/",function(req,res){
    res.render("home",{});

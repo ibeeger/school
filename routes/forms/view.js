@@ -2,12 +2,13 @@
  * @Author: ibeeger
  * @Date:   2017-05-16 11:32:56
  * @Last Modified by:   ibeeger
- * @Last Modified time: 2017-05-16 15:40:24
+ * @Last Modified time: 2017-05-17 17:31:45
  */
 
 'use strict';
 
 const fetch = require("../tools/fetch.js")
+const oid = require('mongodb').ObjectID;
 
 const items = [{
 	title: "xxxxxxxxxx",
@@ -39,7 +40,8 @@ function view(req, res, next) {
 
 //提交投票结果
 function vote(req, res, next) {
-	if (req.query.hasOwnPerproty("vid")) {
+	console.log(req.query.vid)
+	if (!req.query.hasOwnProperty("vid")) {
 		res.json({
 			code: 100,
 			msg: "非法请求"
@@ -49,7 +51,7 @@ function vote(req, res, next) {
 	const vid = req.query.vid;
 	const body = req.body;
 	fetch.updatePush("votes", {
-		_id: vid
+		_id: oid(vid)
 	}, {
 		votes: body
 	}).then(function(data) {
