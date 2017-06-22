@@ -6,7 +6,7 @@ var client = require("./tools/client.js");
 //获取周边学校
 router.post('/local', function(req, res, next) {
 	client.setMethod("GET");
-	client.post("http://api.map.baidu.com/place/v2/search?query=大学&page_size=20&page_num=0&scope=1&location="+req.body["latitude"]+","+req.body["longitude"]+"&radius=3000&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
+	client.post("http://api.map.baidu.com/place/v2/search?query=学校&page_size=20&page_num=0&scope=1&location="+req.body["latitude"]+","+req.body["longitude"]+"&radius=3000&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
 		if (typeof data =='object') {
 			res.json(data)
 		}else{
@@ -15,6 +15,17 @@ router.post('/local', function(req, res, next) {
 	})
 });
 
+//获取周边学校
+router.get('/local', function(req, res, next) {
+	client.setMethod("GET");
+	client.post("http://api.map.baidu.com/place/v2/search?query=学校&page_size=20&page_num=0&scope=1&location="+req.query["latitude"]+","+req.query["longitude"]+"&radius=3000&output=json&ak=C2mrQAjRj3oc9XvbTrPP1UvLEZgWQDZR",{},function(data){
+		if (typeof data =='object') {
+			res.json(data)
+		}else{
+			res.end(data+"!")
+		}
+	})
+});
 
 //获取城市
 router.get("/jingdian",function(req,res,next){
