@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const WXBizDataCrypt = require('./wx/WXBizDataCrypt')
-
+const fs =require("fs");
 // const fetch ={};
 const fetch = require("./tools/fetch.js");
 const client = require("./tools/client.js");
@@ -45,18 +45,24 @@ router.post("/save", function(req, res, next) {
 			
 		}
 	)
-
-	// fetch.updateObj("users", {}).then((data) => {
-	// 	res.json(data[0]);
-	// }).catch((err) => {
-	// 	res.json(err);
-	// })
 });
 
 
 //上传
 router.post("/upload", function(req, res, next) {
+
+	let str = fs.createWriteStream(__dirname+"/../public/images/a.png");
 	
+	req.pipe(str,"UTF8");
+
+	str.on("finish",function(){
+		res.end("ok");
+	})
+
+	str.on('error', function(err){
+	   res.end("err");
+	});
+
 });
 
 
